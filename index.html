@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отсчет до 26 октября</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin: 20px;
+        }
+
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Отсчет до 26 октября</h1>
+    <div class="countdown" id="countdown"></div>
+    <img src="./img/1.png" alt="Адаптивное изображение" class="img-responsive">
+  
+
+    <script>
+        // Задаем дату окончания отсчета (26 октября)
+        const endDate = new Date('2023-10-26T00:00:00').getTime();
+
+        // Обновляем отсчет каждую секунду
+        const countdown = document.getElementById('countdown');
+        const timer = setInterval(function() {
+            const currentDate = new Date().getTime();
+            const timeLeft = endDate - currentDate;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                countdown.textContent = 'Отсчет завершен!';
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                countdown.textContent = `${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
