@@ -25,17 +25,32 @@
     </style>
 </head>
 <body>
-    <h1>Отсчет до 26 октября</h1>
+    <h1>ОСТАЛОСЬ ВСЕГО НИЧЕГО!!!!</h1>
     <div class="countdown" id="countdown"></div>
-    <img src="./img/1.jpeg" alt="Адаптивное изображение" class="img-responsive">
+    <h1>Любовь — это когда сердце бьется быстрее от ожидания встречи.</h1>
+    <img src="./img/1.jpg" alt="Адаптивное изображение" class="img-responsive" id="countdownImage">
   
-
     <script>
-        // Задаем дату окончания отсчета (26 октября)
         const endDate = new Date('2023-10-26T00:00:00').getTime();
-
-        // Обновляем отсчет каждую секунду
+        const countdownImage = document.getElementById('countdownImage');
         const countdown = document.getElementById('countdown');
+        
+        const currentDate = new Date();
+        const today = new Date().getDate();
+        let dayOffset = today - 16;
+
+        if (dayOffset >= 0) {
+            const imageNames = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
+
+            if (dayOffset >= imageNames.length) {
+                dayOffset = imageNames.length - 1;
+            }
+
+            countdownImage.src = `./img/${imageNames[dayOffset]}`;
+        } else {
+            countdownImage.src = `./img/1.jpg`;
+        }
+
         const timer = setInterval(function() {
             const currentDate = new Date().getTime();
             const timeLeft = endDate - currentDate;
