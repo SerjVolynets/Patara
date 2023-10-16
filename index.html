@@ -27,12 +27,14 @@
 <body>
     <h1>ОСТАЛОСЬ ВСЕГО НИЧЕГО!!!!</h1>
     <div class="countdown" id="countdown"></div>
-    <h1>Любовь — это когда сердце бьется быстрее от ожидания встречи.</h1>
+    <h1 id="text">Любовь — это когда сердце бьется быстрее от ожидания встречи.</h1>
     <img src="./img/1.jpg" alt="Адаптивное изображение" class="img-responsive" id="countdownImage">
   
     <script>
         const endDate = new Date('2023-10-26T00:00:00').getTime();
         const countdownImage = document.getElementById('countdownImage');
+        const text = document.getElementById('text');
+
         const countdown = document.getElementById('countdown');
         
         const currentDate = new Date();
@@ -41,14 +43,16 @@
 
         if (dayOffset >= 0) {
             const imageNames = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'];
-
+            const textArr = ['Любовь — это когда сердце бьется быстрее от ожидания встречи.','"Встреча с тобой - это момент, который превосходит все ожидания и превращает серые дни в сказку." – Неизвестный автор', '"Встреча с любимой - это как вдох после долгого задержания дыхания." – Оскар Уайльд','"Скорая встреча с тем, кого ты любишь, - это момент, когда весь мир становится понятным и красивым." – Маргарет Атвуд', '"Встреча с любимой - это переживание тысячи и одной ночи в одно мгновение." – Джон Кітс', '"Момент встречи с моей любимой - это момент, когда время останавливается и весь мир сходит на нет." – Лес Браун', '"Счастье - это видеть улыбку любимого человека при встрече." – Антон Чехов', '"Скорая встреча с любимой - это доказательство того, что счастье находится в простых моментах жизни." – Неизвестный автор', '"Встреча с тобой - это как встреча с самой собой, потому что ты - моя вторая половина." – Анна Каренина (из романа Льва Толстого)', '"Встреча с любимой - это встреча с собой, потому что в ее глазах я нахожу себя." – Жорж Санд' ]
             if (dayOffset >= imageNames.length) {
                 dayOffset = imageNames.length - 1;
             }
 
             countdownImage.src = `./img/${imageNames[dayOffset]}`;
+            text.innerHTML = textArr[dayOffset];
         } else {
             countdownImage.src = `./img/1.jpg`;
+            text.innerHTML = textArr[0];
         }
 
         const timer = setInterval(function() {
